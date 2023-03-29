@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">student_exam_app</string>
+  <string name="facebook_app_id">641124146385238</string>
+  <string name="fb_login_protocol_scheme">fb641124146385238</string>
+     <!-- <string name="ADMOB_APP_ID">ca-app-pub-9828692814404280~9242261433</string>
+      <string name="ADMOB_BANNER_ADD">ca-app-pub-9828692814404280/1145947865</string> -->
+        <string name="ADMOB_APP_ID">ca-app-pub-3940256099942544~3347511713</string>
+      <string name="ADMOB_BANNER_ADD">ca-app-pub-3940256099942544/6300978111</string>
+</resources>

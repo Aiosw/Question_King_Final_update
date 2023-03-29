@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "598814937889",
+    "project_id": "questionking1-ad7d6",
+    "storage_bucket": "questionking1-ad7d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598814937889:android:4255f13fd6563d85522460",
+        "android_client_info": {
+          "package_name": "com.QuestionKing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598814937889-0nhfgreem4j371t8uejnuscog2tb1gnu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.QuestionKing",
+            "certificate_hash": "6cf0e821ff9bb6c092394a1767215abc68526288"
+          }
+        },
+        {
+          "client_id": "598814937889-39em3p7311junh2gns2cibmu9gg8ucdi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.QuestionKing",
+            "certificate_hash": "bef9c123a6dcaaa9e5a2a21eb3c202baf665c970"
+          }
+        },
+        {
+          "client_id": "598814937889-dg0f1k168j7n79embqa4k60a9mj7npn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe9uiDj2RHY03YkS5WdAGNpEFzh_70raE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598814937889-dg0f1k168j7n79embqa4k60a9mj7npn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598814937889:android:4c3a464afd9e7576522460",
+        "android_client_info": {
+          "package_name": "com.question_kring.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598814937889-8bskgcnlq7fq56vec1n6jdqfspc388qf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.question_kring.app",
+            "certificate_hash": "6cf0e821ff9bb6c092394a1767215abc68526288"
+          }
+        },
+        {
+          "client_id": "598814937889-dg0f1k168j7n79embqa4k60a9mj7npn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe9uiDj2RHY03YkS5WdAGNpEFzh_70raE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598814937889-dg0f1k168j7n79embqa4k60a9mj7npn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
