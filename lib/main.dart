@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:competitive_exam_app/Screens/Add%20Bank%20Details/BnkDtls_screen.dart';
 import 'package:competitive_exam_app/Screens/Dashboard/Dashboard_screen.dart';
 import 'package:competitive_exam_app/Screens/Dashboard/SellerProdile.dart';
@@ -23,7 +22,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-
 import 'Screens/Welcome/welcome_screen.dart';
 import 'firebase_options.dart';
 
@@ -40,9 +38,11 @@ class BusDev extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Dashboard",
-      home: Constants.prefs.getBool("loggedIn") == true
-          ? DashBoardScreen()
-          : WelcomeScreen(),
+      home:
+          //  HomePageNotifications(),
+          Constants.prefs.getBool("loggedIn") == true
+              ? DashBoardScreen()
+              : WelcomeScreen(),
       // home: DashBoardScreen(),
       theme: ThemeData(
         primaryColor: kPrimaryColor,
@@ -124,7 +124,11 @@ Future<void> main() async {
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   RemoteNotification notificationMessage = message.notification;
   if (notificationMessage != null) {
-    showNotification(notificationMessage.title, notificationMessage.body);
+    showNotification(
+      notificationMessage.title,
+      notificationMessage.body,
+      flutterLocalNotificationsPlugin,
+    );
   }
 }
 
@@ -154,6 +158,7 @@ initMessaging() async {
         showNotification(
           notificationMessage.title,
           notificationMessage.body,
+          flutterLocalNotificationsPlugin,
         );
       }
     },
@@ -175,13 +180,21 @@ initMessaging() async {
   );
 }
 
-showNotification(String title, String description) async {
+showNotification(
+  String title,
+  String description,
+  FlutterLocalNotificationsPlugin fln,
+) async {
   const AndroidNotificationDetails androidPlatformChannelSpecifics =
       AndroidNotificationDetails(
-          'question_kin_8923_channel', 'Question king updates',
-          channelDescription: 'Question king updates',
-          importance: Importance.max,
-          priority: Priority.high);
+    'question_kin_8923_channel_notification_id',
+    'Question king updates',
+    channelDescription: 'Question king updates',
+    playSound: true,
+    sound: RawResourceAndroidNotificationSound('notification_sound'),
+    importance: Importance.max,
+    priority: Priority.high,
+  );
 
   const NotificationDetails platformChannelSpecifics =
       NotificationDetails(android: androidPlatformChannelSpecifics);
@@ -194,17 +207,30 @@ showNotification(String title, String description) async {
   );
 }
 
-Future<void> scheduleDailyTenAMNotification({int hour, int minute}) async {
+Future<void> scheduleDailyTenAMNotification({
+  int hour,
+  int minute,
+}) async {
   String name = hour.toString() + minute.toString();
+
+  const AndroidNotificationDetails androidPlatformChannelSpecifics =
+      AndroidNotificationDetails(
+    'question_kin_8923_channel_notification_id',
+    'Question king updates',
+    channelDescription: 'Question king updates',
+    playSound: true,
+    sound: RawResourceAndroidNotificationSound('notification_sound'),
+    importance: Importance.max,
+    priority: Priority.high,
+  );
+
   await flutterLocalNotificationsPlugin.zonedSchedule(
     int.parse(name),
     'QuestionKing',
     'Exam start in few minutes...',
     _nextInstanceOfTenAM(hour: hour, minute: minute),
     const NotificationDetails(
-      android: AndroidNotificationDetails(
-          'question_kin_8923_channel', 'Question king updates',
-          channelDescription: 'Question king updates'),
+      android: androidPlatformChannelSpecifics,
     ),
     androidAllowWhileIdle: true,
     uiLocalNotificationDateInterpretation:
