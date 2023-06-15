@@ -76,7 +76,7 @@ class _Body extends State<Body> {
     Fluttertoast.showToast(
         msg: "$Msg",
         toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
+        gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: kPrimaryColor,
         textColor: Colors.white,

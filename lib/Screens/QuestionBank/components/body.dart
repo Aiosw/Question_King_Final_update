@@ -95,7 +95,7 @@ class _Body extends State<Body> with SingleTickerProviderStateMixin {
     Fluttertoast.showToast(
         msg: messge,
         toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
+        gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: kPrimaryColor,
         textColor: Colors.white,
@@ -106,7 +106,7 @@ class _Body extends State<Body> with SingleTickerProviderStateMixin {
     Fluttertoast.showToast(
         msg: messge,
         toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
+        gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: kPrimaryColor,
         textColor: Colors.white,

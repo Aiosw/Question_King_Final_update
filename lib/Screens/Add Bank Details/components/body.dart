@@ -1,17 +1,11 @@
-import 'dart:io';
 import 'package:competitive_exam_app/Model/ProfileMdl.dart';
 import 'package:competitive_exam_app/Screens/Dashboard/components/backgroundHt.dart';
-import 'package:competitive_exam_app/Screens/Profile/User_Model.dart';
 import 'package:competitive_exam_app/Service/ProfileAddService.dart';
 import 'package:competitive_exam_app/Utils/Constant.dart';
 import 'package:competitive_exam_app/components/Apiloader.dart';
 import 'package:competitive_exam_app/components/loader.dart';
 import 'package:competitive_exam_app/components/rounded_button.dart';
 import 'package:competitive_exam_app/components/rounded_input_field.dart';
-import 'package:dio/dio.dart';
-import 'package:path/path.dart';
-import 'package:dropdown_search/dropdown_search.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -52,6 +46,7 @@ class _Body extends State<Body> {
           acName.text = profMdl.acNm;
           acNo.text = profMdl.acNo;
           iFFCNo.text = profMdl.iffcCd;
+
           bcode = profMdl.code;
         });
       }

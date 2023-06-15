@@ -26,7 +26,7 @@ toastMasg(String Msg) {
   Fluttertoast.showToast(
       msg: "$Msg",
       toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
+      gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
       backgroundColor: kPrimaryColor,
       textColor: Colors.white,
@@ -53,6 +53,8 @@ class _Body extends State<Body> {
     // await Loginservice().logincheck(loginModel).then((sucess) {
 
     loginlst = await Loginservice().logincheck(loginModel);
+
+    print("LOGIN RESULT -->>> " + loginlst[0].fName.toString());
     // print("gf sdG: 12 " + loginlst[0].fName.toString());
 
     setState(() {
@@ -66,7 +68,7 @@ class _Body extends State<Body> {
         toastMasg("Login Successfull...");
         Constants.prefs.setBool("loggedIn", true);
         Constants.prefs.setString('logId', loginlst[0].logId);
-
+        print("LOGIN -->>>>>>>>>>>");
         getProfile(loginlst[0].logId);
         Navigator.pop(context);
       }
@@ -375,6 +377,9 @@ class _Body extends State<Body> {
 
                               print("user email 12345:- " +
                                   log.userName.toString());
+
+                              print('_googleSignInAccount -->>> ' +
+                                  _googleSignInAccount.toString());
 
                               add(log, context);
                             }

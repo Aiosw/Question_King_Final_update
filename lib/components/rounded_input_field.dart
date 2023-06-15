@@ -9,6 +9,7 @@ class RoundedInputField extends StatelessWidget {
   final ValueChanged<String> validator;
   final ValueNotifier<TextEditingValue> controllers;
   final int maxleng;
+  final Function(String) onSaved;
   const RoundedInputField({
     Key key,
     this.hintText,
@@ -17,12 +18,15 @@ class RoundedInputField extends StatelessWidget {
     this.controllers,
     this.validator,
     this.maxleng,
+    this.onSaved,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextFormField(
+        onSaved: onSaved,
+        onFieldSubmitted: onSaved,
         enableSuggestions: true,
         //  maxLengthEnforced: false,
         onChanged: onChanged,

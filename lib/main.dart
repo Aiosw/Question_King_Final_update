@@ -12,6 +12,7 @@ import 'package:competitive_exam_app/Screens/QuestionBank/QBank_screen.dart';
 import 'package:competitive_exam_app/Screens/Result/Result_screen.dart';
 import 'package:competitive_exam_app/Screens/Wallet/Wallet_screen.dart';
 import 'package:competitive_exam_app/Utils/Constant.dart';
+import 'package:competitive_exam_app/providers/changeMoneyProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -30,42 +32,47 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 String selectedNotificationPayload;
 
 class BusDev extends StatelessWidget {
-  const BusDev({Key key}) : super(key: key);
+  const BusDev({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     GoogleSignIn().signOut();
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Dashboard",
-      home:
-          //  HomePageNotifications(),
-          Constants.prefs.getBool("loggedIn") == true
-              ? DashBoardScreen()
-              : WelcomeScreen(),
-      // home: DashBoardScreen(),
-      theme: ThemeData(
-        primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: Colors.white,
+    return MultiProvider(
+      providers: [
+        Provider<ChangeStatusMoney>(create: (_) => ChangeStatusMoney()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Dashboard",
+        home:
+            //  HomePageNotifications(),
+            Constants.prefs.getBool("loggedIn") == true
+                ? DashBoardScreen()
+                : WelcomeScreen(),
+        // home: DashBoardScreen(),
+        theme: ThemeData(
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        routes: {
+          "/dashBoard": (context) => DashBoardScreen(),
+          "/LoginScreen": (context) => LoginScreen(),
+          "/Profile": (context) => Profile(),
+          "/Exam": (context) => ExamScreen(),
+          "/wallet": (context) => Wallet(),
+          "/Result": (context) => Result(),
+          "/BankDtls": (context) => BnkDtls(),
+          "/SellerProfile": (context) => SellerProfile(),
+          "/TearmCondition": (context) => TearmsCondition(),
+          "/Sliders": (context) => Sliders(),
+          "/QBank": (context) => QBank(),
+        },
+        // initialRoute: initialRoute,
+        // routes: <String, WidgetBuilder>{
+        //   HomePage.routeName: (_) => HomePage(notificationAppLaunchDetails),
+        //   SecondPage.routeName: (_) => SecondPage(selectedNotificationPayload)
+        // },
       ),
-      routes: {
-        "/dashBoard": (context) => DashBoardScreen(),
-        "/LoginScreen": (context) => LoginScreen(),
-        "/Profile": (context) => Profile(),
-        "/Exam": (context) => ExamScreen(),
-        "/wallet": (context) => Wallet(),
-        "/Result": (context) => Result(),
-        "/BankDtls": (context) => BnkDtls(),
-        "/SellerProfile": (context) => SellerProfile(),
-        "/TearmCondition": (context) => TearmsCondition(),
-        "/Sliders": (context) => Sliders(),
-        "/QBank": (context) => QBank(),
-      },
-      // initialRoute: initialRoute,
-      // routes: <String, WidgetBuilder>{
-      //   HomePage.routeName: (_) => HomePage(notificationAppLaunchDetails),
-      //   SecondPage.routeName: (_) => SecondPage(selectedNotificationPayload)
-      // },
     );
   }
 }

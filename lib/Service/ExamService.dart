@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'package:competitive_exam_app/Model/ExamMdl.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 class Examservice {
@@ -21,7 +19,7 @@ class Examservice {
 
   var Setrst = Uri.parse("https://3.6.153.237/Comp_Api/setResult.php");
 
-  List<ExamModel> logFromComJson(String jsonstring) {
+  List<ExamModel>? logFromComJson(String jsonstring) {
     final data = json.decode(jsonstring);
     // for(int i = 0 ; i<data)
     if (data == "No Record Found.") return null;
@@ -59,22 +57,18 @@ class Examservice {
   Future getQuestion(ExamModel ExamMdl) async {
     final response = await http.post(geturl, body: ExamMdl.toGet());
     if (response.statusCode == 200) {
-      List<ExamModel> list = logFromComJson(response.body);
+      List<ExamModel>? list = logFromComJson(response.body);
       return list;
     } else {
-      return List<ExamModel>();
+      // return List<ExamModel>();
     }
   }
-
- 
 
   Future getAnsQuestion(ExamModel ExamMdl) async {
     final response = await http.post(geturl, body: ExamMdl.toGet());
     if (response.statusCode == 200) {
-      if (response != null) {
-        print("${response.body}");
-        return response.body;
-      }
+      print("${response.body}");
+      return response.body;
     }
   }
 
@@ -82,8 +76,7 @@ class Examservice {
     print("response : " + "send");
 
     try {
-
-    print("response 99 : " +  ExamMdl.toJsonFeth().toString());
+      print("response 99 : " + ExamMdl.toJsonFeth().toString());
 
       final response = await http.post(rst, body: ExamMdl.toJsonFeth());
 

@@ -20,7 +20,6 @@ class Background extends StatelessWidget {
             color: kPrimaryColor,
           )
         ],
-        //color: kPrimaryColor,
         gradient: LinearGradient(
             colors: [
               Colors.orange,
@@ -31,11 +30,8 @@ class Background extends StatelessWidget {
             stops: [0.2, 1.0],
             tileMode: TileMode.clamp),
       ),
-      // color: Colors.black87.withOpacity(0.5),
       width: size.width,
-      //  color: Colors.black87.withOpacity(0.5),
-      //  width: double.infinity,
-      height: 750,
+      height: size.height,
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
@@ -46,31 +42,8 @@ class Background extends StatelessWidget {
               "asset/images/main_top.png",
               width: size.width * 0.35,
               color: Colors.black.withOpacity(0.5),
-              // colorBlendMode: BlendMode.darken,
             ),
           ),
-          // Positioned(
-          //   bottom: 50,
-          //   right: 2,
-          //   left: 2,
-          //   top: 50,
-          //   child: Image.asset(
-          //     "asset/bdDashborad.jpg",
-          //     width: size.width * 2,
-          //     color: Colors.black.withOpacity(0.5),
-          //     colorBlendMode: BlendMode.darken,
-          //   ),
-          // ),
-          // Positioned(
-          //   bottom: 0,
-          //   right: 0,
-          //   child: Image.asset(
-          //     "asset/images/login_bottom.png",
-          //     width: size.width * 0.4,
-          //     color: Colors.black.withOpacity(0.5),
-          //    // colorBlendMode: BlendMode.darken,
-          //   ),
-          // ),
           child,
         ],
       ),

@@ -43,7 +43,10 @@ class _Body extends State<Body> {
       imageNm,
       email,
       mobNo,
-      profileCode;
+      profileCode,
+      acHolderName,
+      acNumber,
+      ifsc;
   String bal;
   List<LedgerModel> LedgerLst;
 
@@ -54,6 +57,9 @@ class _Body extends State<Body> {
   TextEditingController city = TextEditingController();
   TextEditingController Email = TextEditingController();
   TextEditingController MobNo = TextEditingController();
+  TextEditingController accountNumberController;
+  TextEditingController accountIFSCController;
+  TextEditingController accountHolderNameController;
   bool value = false;
   List<ProfileModel> profLst;
   bool isloading = true;
@@ -175,7 +181,7 @@ class _Body extends State<Body> {
     Fluttertoast.showToast(
         msg: messge,
         toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
+        gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: kPrimaryColor,
         textColor: Colors.white,
@@ -186,7 +192,7 @@ class _Body extends State<Body> {
     Fluttertoast.showToast(
         msg: messge,
         toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
+        gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: kPrimaryColor,
         textColor: Colors.white,
@@ -237,6 +243,12 @@ class _Body extends State<Body> {
   void initState() {
     super.initState();
     getOldProfileData();
+    accountNumberController = TextEditingController(
+        text: Constants.prefs.getString('userAccountNumber') ?? '');
+    accountIFSCController = TextEditingController(
+        text: Constants.prefs.getString('userAccountIFSCcode') ?? '');
+    accountHolderNameController = TextEditingController(
+        text: Constants.prefs.getString('userAccountHolderName') ?? '');
     //isloading = false;
   }
 
@@ -252,10 +264,10 @@ class _Body extends State<Body> {
             key: _formKey,
             child: isloading
                 ? loaders().apiLoader
-                : SingleChildScrollView(
-                    child: Background(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                : Background(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SingleChildScrollView(
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
@@ -463,6 +475,7 @@ class _Body extends State<Body> {
                                           .setString('Email', Email.text);
                                       Constants.prefs
                                           .setString("langCd", languageCd);
+
                                       Constants.prefs.setString(
                                           "profileImg",
                                           imageNm == null

@@ -270,7 +270,7 @@ class _Body extends State<Body> with TickerProviderStateMixin {
           msg:
               "Your Wallet Balance is low First Add Money After eligible for Exam",
           toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
+          gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 10,
           backgroundColor: Colors.red,
           textColor: Colors.white,
